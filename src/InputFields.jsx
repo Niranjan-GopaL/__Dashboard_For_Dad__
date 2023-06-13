@@ -8,12 +8,12 @@ const InputFields = () => {
   }, []);
 
   const handleKeyDown = (event, currentIndex) => {
-    if (event.ctrlKey && (event.key === "j" || event.key === "k")) {
+    if (event.ctrlKey && (event.key === "k" || event.key === "j")) {
       event.preventDefault(); // Prevent default browser behavior
 
-      if (event.key === "j" && currentIndex < inputRefs.current.length - 1) {
+      if (event.key === "k" && currentIndex < inputRefs.current.length - 1) {
         inputRefs.current[currentIndex + 1].focus(); // Move focus to the next input field
-      } else if (event.key === "k" && currentIndex > 0) {
+      } else if (event.key === "j" && currentIndex > 0) {
         inputRefs.current[currentIndex - 1].focus(); // Move focus to the previous input field
       }
     }
