@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
+import './InputFields.css'
 
-const InputFields = () => {
+const InputFields = () => {sr
   const inputRefs = useRef([]);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const InputFields = () => {
   };
 
   return (
-    <div className="flex-container">
+    <div className="input-container">
       {Array.from({ length: 16 }, (_, index) => (
         <input
           key={index}
