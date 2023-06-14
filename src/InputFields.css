@@ -1,11 +1,12 @@
 .input-container {
+    /* width:1000px; */
     display: flex;
     flex-wrap: nowrap; /* Ensure all fields stay in a single line */
     overflow-x: auto; /* Add horizontal scroll if fields overflow the container */
   }
   
   .input-field {
-    width: 100px;
+    width: 50px;
     margin-right: 10px;
   }
   

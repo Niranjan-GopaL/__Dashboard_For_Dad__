@@ -1,34 +1,48 @@
 import React, { useRef, useEffect } from "react";
 import './InputFields.css'
 
-const InputFields = () => {sr
+const InputFields = () => {
   const inputRefs = useRef([]);
 
   useEffect(() => {
-    inputRefs.current[0].focus(); // Set initial focus on the first input field
+    // Set initial focus on the first input field
+    inputRefs.current[0].focus(); 
   }, []);
 
   const handleKeyDown = (event, currentIndex) => {
     if (event.ctrlKey && (event.key === "k" || event.key === "j")) {
-      event.preventDefault(); // Prevent default browser behavior
+      // Prevent default browser behavior
+      event.preventDefault(); 
 
-      if (event.key === "k" && currentIndex < inputRefs.current.length - 1) {
-        inputRefs.current[currentIndex + 1].focus(); // Move focus to the next input field
-      } else if (event.key === "j" && currentIndex > 0) {
-        inputRefs.current[currentIndex - 1].focus(); // Move focus to the previous input field
+      const arr_len = inputRefs.current.length;
+
+      // Enabled CIRCULAR traversal
+      if (event.key === "k" ) {
+
+        currentIndex = (currentIndex + 1 + arr_len) % arr_len;
+        inputRefs.current[currentIndex].focus(); 
+
+      } else if (event.key === "j") {
+
+        currentIndex = (currentIndex - 1 + arr_len) % arr_len;
+        inputRefs.current[currentIndex].focus(); 
+
       }
     }
   };
 
+  
   return (
     <div className="input-container">
       {Array.from({ length: 16 }, (_, index) => (
         <input
           key={index}
-          ref={el => (inputRefs.current[index] = el)} // Store input field reference in inputRefs
+          // Store input field reference in inputRefs
+          ref={el => (inputRefs.current[index] = el)} 
           type="text"
           className="input-field"
-          onKeyDown={event => handleKeyDown(event, index)} // Pass current index to handleKeyDown
+          // Pass current index to handleKeyDown
+          onKeyDown={event => handleKeyDown(event, index)} 
         />
       ))}
     </div>
