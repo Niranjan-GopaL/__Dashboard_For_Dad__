@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import './InputFields.css'
+import { Box } from "@mui/material";
 
 const InputFields = () => {
   const inputRefs = useRef([]);
@@ -31,9 +32,9 @@ const InputFields = () => {
     }
   };
 
-  
+
   return (
-    <div className="input-container">
+    <Box className="input-container">
       {Array.from({ length: 16 }, (_, index) => (
         <input
           key={index}
@@ -45,7 +46,7 @@ const InputFields = () => {
           onKeyDown={event => handleKeyDown(event, index)} 
         />
       ))}
-    </div>
+    </Box>
   );
 };
 
